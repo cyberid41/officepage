@@ -26,8 +26,8 @@ class CreateTableDataPribadi extends Migration
             $table->string("tanggal_lahir");
             $table->string("status_perkawinan");
             $table->string("hub_keluarga");
-            $table->string("agama_id");
-            $table->string("golongan_darah_id");
+            $table->string("agama");
+            $table->string("golongan_darah");
             $table->string("pendidikan_id");
             $table->string("pekerjaan_id");
             $table->string("data_ortu_id");
