@@ -35,10 +35,10 @@ class ModelCommand extends GeneratorCommand
     protected function getStub()
     {
         if ($this->option('plain')) {
-            return __DIR__ . '/stubs/uuid_model.plain.stub';
+            return __DIR__ . '/stubs/model.plain.stub';
         }
 
-        return __DIR__ . '/stubs/uuid_model.stub';
+        return __DIR__ . '/stubs/model.stub';
     }
 
     /**

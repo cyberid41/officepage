@@ -1,10 +1,10 @@
 <?php namespace SimdesApp\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 use Webpatser\Uuid\Uuid;
 
-class UuidModel extends Model
+class Model extends Eloquent
 {
 
     /**

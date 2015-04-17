@@ -1,0 +1,71 @@
+<?php namespace {{namespace}};
+
+use {{rootNamespace}}Http\Requests;
+use {{rootNamespace}}Http\Controllers\Controller;
+
+/**
+ * Class {{class}}
+ *
+ * @package {{namespace}}
+ */
+class {{class}} extends Controller {
+
+    /**
+     * Create new Instance Controller
+     */
+    public function __construct()
+    {
+
+    }
+
+    /**
+     * Get the record with custome pagination and search
+     *
+     * @param int  $page
+     * @param int  $limit
+     * @param null $term
+     */
+    public function index($page = 1, $limit = 10, $term = null)
+    {
+
+    }
+
+    /**
+     * Store new record
+     */
+    public function store()
+    {
+
+    }
+
+    /**
+     * Show a record
+     *
+     * @param $id
+     */
+    public function show($id)
+    {
+
+    }
+
+    /**
+     * Update a record
+     *
+     * @param $id
+     */
+    public function update($id)
+    {
+
+    }
+
+    /**
+     * Destroy a record
+     *
+     * @param $id
+     */
+    public function destroy($id)
+    {
+
+    }
+}
+
