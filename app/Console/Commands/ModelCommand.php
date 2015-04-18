@@ -25,7 +25,7 @@ class ModelCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $type = 'Uuid Model class';
+    protected $type = 'Model class';
 
     /**
      * Get the stub file for the generator.
