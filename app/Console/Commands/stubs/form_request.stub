@@ -1,6 +1,5 @@
 <?php namespace {{namespace}};
 
-use SimdesApp\Http\Requests\Request;
 use Illuminate\Validation\Validator;
 
 class {{class}} extends Request
