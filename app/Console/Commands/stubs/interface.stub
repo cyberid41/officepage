@@ -1,0 +1,49 @@
+<?php namespace {{namespace}};
+
+/**
+ * Interface {{class}}
+ *
+ * @package {{namespace}}
+ */
+interface {{class}}
+{
+
+    /**
+     * @param int  $page
+     * @param int  $limit
+     * @param null $term
+     *
+     * @return mixed
+     */
+    public function find($page = 1, $limit = 10, $term = null);
+
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function findById($id);
+
+    /**
+     * @param array $data
+     *
+     * @return mixed
+     */
+    public function create(array $data);
+
+    /**
+     * @param       $id
+     * @param array $data
+     *
+     * @return mixed
+     */
+    public function update($id, array $data);
+
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function destroy($id);
+
+}

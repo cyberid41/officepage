@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\ModelCommand',
         'App\Console\Commands\FormRequestCommand',
         'App\Console\Commands\ControllerCommand',
+        'App\Console\Commands\InterfaceCommand',
     ];
 
     /**
