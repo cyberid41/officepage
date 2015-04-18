@@ -1,4 +1,4 @@
-<?php namespace SimdesApp\Models;
+<?php namespace App\Entities;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model as Eloquent;
