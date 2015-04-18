@@ -43,7 +43,7 @@ class {{class}} extends Model {
      *
      * @var string
      */
-    protected $primaryKey = '_id';
+    protected $primaryKey = 'id';
 
     /**
      * Boot the Model
