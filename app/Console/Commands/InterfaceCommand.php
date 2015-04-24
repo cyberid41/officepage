@@ -3,7 +3,7 @@
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
-class RepositoryCommand extends GeneratorCommand
+class InterfaceCommand extends GeneratorCommand
 {
 
     /**
@@ -11,7 +11,7 @@ class RepositoryCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'app:repository';
+    protected $name = 'app:interface';
 
     /**
      * The console command description.
@@ -25,7 +25,7 @@ class RepositoryCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $type = 'Repository class';
+    protected $type = 'Interface';
 
     /**
      * Get the stub file for the generator.
@@ -35,10 +35,10 @@ class RepositoryCommand extends GeneratorCommand
     protected function getStub()
     {
         if ($this->option('plain')) {
-            return __DIR__ . '/stubs/repository.plain.stub';
+            return __DIR__ . '/stubs/interface.plain.stub';
         }
 
-        return __DIR__ . '/stubs/repository.stub';
+        return __DIR__ . '/stubs/interface.stub';
     }
 
     /**
@@ -50,7 +50,7 @@ class RepositoryCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Repositories';
+        return $rootNamespace . '\Contracts';
     }
 
     /**
@@ -61,7 +61,7 @@ class RepositoryCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['plain', null, InputOption::VALUE_NONE, 'Generate an empty repository class.'],
+            ['plain', null, InputOption::VALUE_NONE, 'Generate an interface.'],
         ];
     }
 

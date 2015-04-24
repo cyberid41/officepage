@@ -149,6 +149,7 @@ return [
          * Third Lib Application Service Provider
          */
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Mmanos\Search\SearchServiceProvider',
 
     ],
 
@@ -197,6 +198,11 @@ return [
         'URL'       => 'Illuminate\Support\Facades\URL',
         'Validator' => 'Illuminate\Support\Facades\Validator',
         'View'      => 'Illuminate\Support\Facades\View',
+
+        /*
+         * Third Lib Alias
+         */
+        'Search'    => 'Mmanos\Search\Facade',
 
     ],
 

@@ -1,4 +1,4 @@
-<?php namespace App\Repository;
+<?php namespace App\Eloquent;
 
 use App\Exceptions\EntityNotFoundException;
 use Illuminate\Database\Eloquent\Model;
@@ -74,6 +74,71 @@ abstract class AbstractRepository
     public function getNewInstance($attributes = [])
     {
         return $this->model->newInstance($attributes);
+    }
+
+    /**
+     * @param array $response
+     *
+     * @return mixed
+     */
+    public function successResponseOk(array $response = [])
+    {
+        return \Response::json($response, 200);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function successInsertResponse()
+    {
+        return $this->successResponseOk([
+            'success' => true,
+            'message' => [
+                'msg' => 'Data berhasil disimpan',
+            ],
+        ]);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function successUpdateResponse()
+    {
+        return $this->successResponseOk([
+            'success' => true,
+            'message' => [
+                'msg' => 'Data berhasil diupdate',
+            ],
+        ]);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function successDeleteResponse()
+    {
+        return $this->successResponseOk([
+            'success' => true,
+            'message' => [
+                'msg' => 'Data berhasil dihapus',
+            ],
+        ]);
+    }
+
+    /**
+     * @param $error
+     *
+     * @return mixed
+     */
+    public function errorResponse($error)
+    {
+        return $this->successResponseOk([
+            'success' => false,
+            'message' => [
+                'msg'   => 'Internal server Error',
+                'error' => $error
+            ],
+        ]);
     }
 
 }
