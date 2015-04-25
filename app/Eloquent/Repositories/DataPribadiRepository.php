@@ -159,14 +159,4 @@ class DataPribadiRepository extends AbstractRepository implements CrudInterface
         }
     }
 
-    /**
-     * @param $keluarga_id
-     *
-     * @return mixed
-     */
-    public function findByKeluargaId($keluarga_id)
-    {
-        return 'okey';
-    }
-
 }

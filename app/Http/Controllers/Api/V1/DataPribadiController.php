@@ -75,9 +75,5 @@ class DataPribadiController extends Controller
 
     }
 
-    public function findByKeluargaId(DataPribadiRepository $dataPribadi, $keluarga_id)
-    {
-        return $dataPribadi->findByKeluargaId($keluarga_id);
-    }
 }
 
