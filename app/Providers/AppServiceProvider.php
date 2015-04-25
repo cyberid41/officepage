@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Eloquent\Contracts\DataPribadiInterface',
+            'App\Eloquent\Contracts\CrudInterface',
             'App\Eloquent\Repositories\DataPribadiRepository'
         );
 

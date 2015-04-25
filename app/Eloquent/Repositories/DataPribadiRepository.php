@@ -1,9 +1,9 @@
 <?php namespace App\Eloquent\Repositories;
 
 use App\Eloquent\AbstractRepository;
-use App\Eloquent\Contracts\DataPribadiInterface;
+use App\Eloquent\Contracts\CrudInterface;
 use App\Entities\DataPribadi;
-use App\Services\Elasticsearch\Query;
+use App\Services\Elasticsearch\Query as Elasticsearch;
 use App\Services\LaraCacheInterface;
 
 /**
@@ -11,7 +11,7 @@ use App\Services\LaraCacheInterface;
  *
  * @package App\Repository
  */
-class DataPribadiRepository extends AbstractRepository implements DataPribadiInterface
+class DataPribadiRepository extends AbstractRepository implements CrudInterface
 {
     /**
      * Index of Elasticsearch
@@ -28,11 +28,11 @@ class DataPribadiRepository extends AbstractRepository implements DataPribadiInt
     private $type = "data_pribadi";
 
     /**
-     * @var LaraCacheInterface
+     * @param DataPribadi        $dataPribadi
+     * @param LaraCacheInterface $cache
+     * @param Elasticsearch      $elastic
      */
-    protected $cache;
-
-    public function __construct(DataPribadi $dataPribadi, LaraCacheInterface $cache, Query $elastic)
+    public function __construct(DataPribadi $dataPribadi, LaraCacheInterface $cache, Elasticsearch $elastic)
     {
         $this->cache = $cache;
         $this->model = $dataPribadi;
@@ -157,6 +157,16 @@ class DataPribadiRepository extends AbstractRepository implements DataPribadiInt
 
             return $this->errorResponse($ex);
         }
+    }
+
+    /**
+     * @param $keluarga_id
+     *
+     * @return mixed
+     */
+    public function findByKeluargaId($keluarga_id)
+    {
+        return 'okey';
     }
 
 }

@@ -164,6 +164,7 @@ class Query
         }
 
         return [
+            "success"      => $this->getResult($results),
             "total"        => (int)$total,
             "per_page"     => (int)$per_page,
             "current_page" => (int)$current_page,
@@ -226,6 +227,13 @@ class Query
         return $from - 1;
     }
 
+    /**
+     * @param $from
+     * @param $current_page
+     * @param $last_page
+     *
+     * @return mixed
+     */
     public function getFrom($from, $current_page, $last_page)
     {
         if ($current_page > $last_page) {
@@ -233,6 +241,20 @@ class Query
         }
 
         return $from;
+    }
+
+    /**
+     * @param $result
+     *
+     * @return string
+     */
+    public function getResult($result)
+    {
+        if (empty($result)) {
+            return false;
+        }
+
+        return true;
     }
 
 }

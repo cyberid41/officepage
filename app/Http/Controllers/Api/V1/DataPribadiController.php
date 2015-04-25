@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers\Api\V1;
 
+use App\Eloquent\Contracts\CrudInterface;
+use App\Eloquent\Repositories\DataPribadiRepository;
 use App\Http\Requests\DataPribadiFormRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\IndexRequest;
-use App\Eloquent\Contracts\DataPribadiInterface;
 
 /**
  * Class DataPribadiController
@@ -16,11 +17,11 @@ class DataPribadiController extends Controller
     /**
      * Create a new instance Controller
      *
-     * @param DataPribadiInterface $dataPribadi
+     * @param CrudInterface $crud
      */
-    public function __construct(DataPribadiInterface $dataPribadi)
+    public function __construct(CrudInterface $crud)
     {
-        $this->dataPribadi = $dataPribadi;
+        $this->dataPribadi = $crud;
     }
 
     /**
@@ -72,6 +73,11 @@ class DataPribadiController extends Controller
     public function destroy($id)
     {
 
+    }
+
+    public function findByKeluargaId(DataPribadiRepository $dataPribadi, $keluarga_id)
+    {
+        return $dataPribadi->findByKeluargaId($keluarga_id);
     }
 }
 

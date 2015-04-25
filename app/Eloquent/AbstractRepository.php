@@ -1,6 +1,5 @@
 <?php namespace App\Eloquent;
 
-use App\Exceptions\EntityNotFoundException;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -16,18 +15,11 @@ abstract class AbstractRepository
     protected $model;
 
     /**
-     * @var EntityNotFoundException
+     * @param Model $model
      */
-    protected $exception;
-
-    /**
-     * @param Model                   $model
-     * @param EntityNotFoundException $exception
-     */
-    public function __construct(Model $model, EntityNotFoundException $exception)
+    public function __construct(Model $model)
     {
         $this->model = $model;
-        $this->exception = $exception;
     }
 
     /**
@@ -60,7 +52,7 @@ abstract class AbstractRepository
     {
         $model = $this->getById($id);
         if (!$model) {
-            return $this->exception->getByIdNotFound($id);
+            return $this->notFound($id);
         }
 
         return $model;
@@ -137,6 +129,22 @@ abstract class AbstractRepository
             'message' => [
                 'msg'   => 'Internal server Error',
                 'error' => $error
+            ],
+        ]);
+    }
+
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function notFound($id)
+    {
+        return $this->successResponseOk([
+            'success' => false,
+            'message' => [
+                'msg'      => 'Data tidak ada atau sudah dihapus',
+                'identity' => $id
             ],
         ]);
     }

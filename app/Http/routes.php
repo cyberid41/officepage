@@ -19,6 +19,7 @@ Route::get('get-token', function () {
 
 Route::get('data-pribadi', 'Api\V1\DataPribadiController@index');
 Route::get('data-pribadi/{id}', 'Api\V1\DataPribadiController@show');
+Route::get('data-pribadi/{keluarga_id}/keluarga', 'Api\V1\DataPribadiController@findByKeluargaId');
 Route::post('data-pribadi', 'Api\V1\DataPribadiController@store');
 Route::put('data-pribadi/{id}', 'Api\V1\DataPribadiController@update');
 Route::delete('data-pribadi/{id}', 'Api\V1\DataPribadiController@destroy');
