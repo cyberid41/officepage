@@ -4,6 +4,7 @@ use App\Eloquent\AbstractRepository;
 use App\Eloquent\Contracts\CrudInterface;
 use App\Entities\DataPribadi;
 use App\Services\Elasticsearch\Query as Elasticsearch;
+use App\Services\Elasticsearch\Query;
 use App\Services\LaraCacheInterface;
 
 /**
@@ -28,15 +29,12 @@ class DataPribadiRepository extends AbstractRepository implements CrudInterface
     private $type = "data_pribadi";
 
     /**
-     * @param DataPribadi        $dataPribadi
-     * @param LaraCacheInterface $cache
-     * @param Elasticsearch      $elastic
+     * {@inheritdoc}
      */
-    public function __construct(DataPribadi $dataPribadi, LaraCacheInterface $cache, Elasticsearch $elastic)
+    public function __construct()
     {
-        $this->cache = $cache;
-        $this->model = $dataPribadi;
-        $this->elastic = $elastic;
+        $this->model = new DataPribadi();
+        $this->elastic = new Query();
     }
 
     /**

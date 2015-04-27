@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers\Api\V1;
 
-use App\Eloquent\Contracts\CrudInterface;
+use App\Eloquent\Contracts\AbstractCrud;
 use App\Eloquent\Repositories\DataPribadiRepository;
 use App\Http\Requests\DataPribadiFormRequest;
 use App\Http\Controllers\Controller;
@@ -17,11 +17,11 @@ class DataPribadiController extends Controller
     /**
      * Create a new instance Controller
      *
-     * @param CrudInterface $crud
+     * @param AbstractCrud $crud
      */
-    public function __construct(CrudInterface $crud)
+    public function __construct(AbstractCrud $crud)
     {
-        $this->dataPribadi = $crud;
+        $this->dataPribadi = $crud->setCrud(new DataPribadiRepository());
     }
 
     /**
