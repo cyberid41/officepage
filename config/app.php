@@ -150,6 +150,8 @@ return [
          */
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Mmanos\Search\SearchServiceProvider',
+        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+        'Barryvdh\Cors\CorsServiceProvider'
 
     ],
 

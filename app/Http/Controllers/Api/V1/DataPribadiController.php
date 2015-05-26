@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers\Api\V1;
 
-use App\Eloquent\Contracts\AbstractCrud;
-use App\Eloquent\Repositories\DataPribadiRepository;
+use App\Eloquent\Contracts\CrudInterface;
 use App\Http\Requests\DataPribadiFormRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\IndexRequest;
@@ -13,15 +12,17 @@ use App\Http\Requests\IndexRequest;
  */
 class DataPribadiController extends Controller
 {
+    /**
+     * @var CrudInterface
+     */
+    protected $crud;
 
     /**
-     * Create a new instance Controller
-     *
-     * @param AbstractCrud $crud
+     * @param CrudInterface $crud
      */
-    public function __construct(AbstractCrud $crud)
+    public function __construct(CrudInterface $crud)
     {
-        $this->dataPribadi = $crud->setCrud(new DataPribadiRepository());
+        $this->crud = $crud;
     }
 
     /**
@@ -31,7 +32,7 @@ class DataPribadiController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        return $this->dataPribadi->find($request->all());
+        return $this->crud->find($request->all());
     }
 
     /**
@@ -41,7 +42,7 @@ class DataPribadiController extends Controller
      */
     public function store(DataPribadiFormRequest $request)
     {
-        return $this->dataPribadi->create($request->all());
+        return $this->crud->create($request->all());
     }
 
     /**
@@ -51,7 +52,7 @@ class DataPribadiController extends Controller
      */
     public function show($id)
     {
-        return $this->dataPribadi->findById($id);
+        return $this->crud->findById($id);
     }
 
     /**
@@ -62,7 +63,7 @@ class DataPribadiController extends Controller
      */
     public function update($id, DataPribadiFormRequest $request)
     {
-        return $this->dataPribadi->update($id, $request->all());
+        return $this->crud->update($id, $request->all());
     }
 
     /**

@@ -31,6 +31,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Services\LaraCacheInterface',
             'App\Services\LaraCache'
         );
+
+        $this->app->when(
+            'App\Services\LaraCacheInterface',
+            'App\Services\LaraCache'
+        );
     }
 
 }
