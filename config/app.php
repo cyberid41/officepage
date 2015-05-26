@@ -205,6 +205,7 @@ return [
          * Third Lib Alias
          */
         'Search'    => 'Mmanos\Search\Facade',
+        'JWTAuth'   => 'Tymon\JWTAuth\Facades\JWTAuth'
 
     ],
 

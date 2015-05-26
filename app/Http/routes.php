@@ -17,12 +17,42 @@ Route::get('get-token', function () {
     echo csrf_token();
 });
 
-Route::get('data-pribadi', 'Api\V1\DataPribadiController@index');
-Route::get('data-pribadi/{id}', 'Api\V1\DataPribadiController@show');
-Route::get('data-pribadi/{keluarga_id}/keluarga', 'Api\V1\DataPribadiController@findByKeluargaId');
-Route::post('data-pribadi', 'Api\V1\DataPribadiController@store');
-Route::put('data-pribadi/{id}', 'Api\V1\DataPribadiController@update');
-Route::delete('data-pribadi/{id}', 'Api\V1\DataPribadiController@destroy');
+Route::group(['namespace' => 'Api\V1', 'prefix' => 'api/v1/'], function () {
+    Route::get('data-pribadi', 'DataPribadiController@index');
+    Route::get('data-pribadi/{id}', 'DataPribadiController@show');
+    Route::get('data-pribadi/{keluarga_id}/keluarga', 'DataPribadiController@findByKeluargaId');
+    Route::post('data-pribadi', 'DataPribadiController@store');
+    Route::put('data-pribadi/{id}', 'DataPribadiController@update');
+    Route::delete('data-pribadi/{id}', 'DataPribadiController@destroy');
+});
+
+Route::post('/signin', function () {
+    $credentials = Input::only('email', 'password');
+
+    if (!$token = JWTAuth::attempt($credentials)) {
+        return [
+            'status'  => 401,
+            'message' => 'Unauthorized'
+        ];
+    }
+
+    return Response::json(compact('token'));
+});
+
+Route::get('/restricted', [
+    'before' => 'jwt-auth',
+    function () {
+        $token = JWTAuth::getToken();
+        $user = JWTAuth::toUser($token);
+
+        return Response::json([
+            'data' => [
+                'email'         => $user->email,
+                'registered_at' => $user->created_at->toDateTimeString()
+            ]
+        ]);
+    }
+]);
 
 Route::get('elasticsearch-post', function () {
     $client = new Elasticsearch\Client();

@@ -9,7 +9,7 @@ return [
     | A helper command is provided for this: `php artisan jwt:generate`
     |
     */
-    'secret'            => env('JWT_SECRET', 'changeme'),
+    'secret'            => env('JWT_SECRET', 'oJCUsIN3IYC7udtWRZAI7WvFpOqQ7stS'),
     /*
     |--------------------------------------------------------------------------
     | JWT time to live
@@ -53,7 +53,7 @@ return [
     | e.g. 'Acme\Entities\User'
     |
     */
-    'user'              => 'App\User',
+    'user'              => 'App\Entities\User',
     /*
     |--------------------------------------------------------------------------
     | User identifier
